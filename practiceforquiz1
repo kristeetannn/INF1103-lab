@@ -1,0 +1,196 @@
+# sequential control flow
+first = 15
+second = 50
+print(first, second)
+first, second = second, first 
+print(first, second)
+
+#conditional control flow: if statement 
+food = "fries"
+price = 0.0
+if food == "Burger":
+    print("you choose burger")
+    print("please pay 8.00 SGD")
+    price = 8.00
+elif food == "Pizza":
+    print("you choose pizza")
+    print("please pay 10.00 SGD")
+    price = 10.00
+else:
+    print("Sorry, we don't have that food item")
+
+#iteration (loop) control: while 
+walk_circle = 0
+while walk_circle < 10:
+    walk_circle = walk_circle + 1
+print("walking complete")
+print(walk_circle)
+
+#break statement 
+walk_circle = 0
+for walk_circle in range(1,10):
+    print(walk_circle)
+    if walk_circle == 5:
+        break
+print("walking complete")
+print(walk_circle)
+
+# continue statement
+walk_circle = 0
+for walk_circle in range(1,10):
+    print(walk_circle)
+    if walk_circle == 5:
+        continue
+print("walking complete")
+print(walk_circle)
+
+#function arguments 
+#formal arguments: the parameters defined in the function definition
+def greet(name):
+    print("Hello", name)
+#actual arguments: the values passed to the function when it is called
+greet("Ali")
+
+#positional arguments: the values are passed to the function in the order they are defined
+def create_order(customer, product, quantity):
+    print(customer, "ordered", quantity, product)
+
+create_order("Jordan", "Laptop",2) #Jordan ordered 2 Laptop
+create_order("Laptop","Jordan", 2)  #Laptop ordered 2 Jordan
+
+#keyword arguments: the values are passed to the function using the parameter names
+def create_order(customer, product, quantity):
+    print(customer, "ordered", quantity, product)
+
+create_order(customer="Jordan", product="Laptop", quantity=2)  # Jordan ordered 2 Laptop
+create_order(quantity=2, product="Laptop", customer="Jordan")  # Jordan ordered 2 Laptop
+
+#tuple
+numbers = (1, 2, 3, 4, 5)
+print(numbers)
+
+#function return values
+def calculate_discount(price):
+    discount = price * 0.10
+    return discount
+
+def calculate(a, b):
+    return a + b, a * b
+sumvalue, product_value = calculate(4, 5)
+print(sumvalue) # 9
+print(product_value) # 20   
+
+#scope of variables - local variable
+def calculate_discount(price):
+    discount = price *0.10
+    return discount 
+print(calculate_discount(100))
+# print(discount) # NameError: name 'discount' is not defined
+
+#list - concatenation and repetition
+concatenate_list = [3 + 4 + 5]
+repetition_list = [1, 2, 3] * 3
+print(concatenate_list) # [12]
+print(repetition_list) # [1, 2, 3, 1, 2, 3, 1, 2, 3]
+
+#list - index in a sequence 
+my_list = ['abc', 123, True, 'fff', [0, 1, 2]]
+print(my_list[0])  # Output: 'abc'
+print(my_list[-2]) # Output: 'fff'
+print(my_list[:5:2]) # Output: ['abc', True, [0, 1, 2]]
+print("abc" in my_list) # Output: True
+
+#list operations- update
+my_list = ['abc', 123, True, 'fff', [0, 1, 2]]
+my_list[2] = False 
+print(my_list)
+
+#list operations - add
+my_list = ['abc', 123, True, 'fff', [0, 1, 2]]
+my_list.append('new_item') # adds 'new_item' to the end of the list
+my_list.insert(2, 'inserted_item') # inserts 'inserted_item' at index 2
+print(my_list)
+
+#list operations - delete
+my_list = ['abc', 123, True, 'fff', [0, 1, 2]]
+del my_list[1] # deletes the item at index 1
+print(my_list)
+
+#list operations - remove
+my_list = ['abc', 123, True, 'fff', [0, 1, 2]]
+my_list.remove(123) # removes the first occurrence of 123 from the list
+print(my_list)
+
+#list operations - length 
+len(my_list) # returns the number of items in the list
+print(len(my_list))
+
+#loop through a list 
+fruits = ['apple', 'banana', 'cherry']
+for fruit in fruits:
+    print(fruit)
+
+#copying list - copy()
+list1 = [10,20,30]
+list2 = list1.copy() # creates a shallow copy of list1
+list2[0] = 99
+print(list1) # Output: [10, 20, 30]
+print(list2) # Output: [99, 20, 30]
+
+#copying list - list()
+list1 = [10,20,30]
+list2 = list(list1) # creates a shallow copy of list1
+print(list1) # Output: [10, 20, 30]
+print(list2) # Output: [10, 20, 30]
+
+#copying list - deepCopy()
+import copy
+list1 = [[1, 2], [3, 4]]
+list2 = copy.deepcopy(list1) # creates a deep copy of list1
+list2[0][0] = 99
+print(list1) # Output: [[1, 2], [3, 4]] 
+
+#functions stored in a list
+def add(x):
+    return x + 10
+
+def multiply(x):
+    return x * 10
+
+def square(x):
+    return x ** 2
+
+operations = [add, multiply, square] #store function objects in a list 
+print(operations[0](5)) # Output: 15
+print(operations[1](5)) # Output: 50
+print(operations[2](5)) # Output: 25
+
+# # read a file and print its contents
+# with open("orders.txt.txt", "r") as file:
+#     orders = file.read()
+#     line1 = file.readline()
+#     line2 = file.readline()
+# print(orders)
+# print(line1)
+# print(line2)  
+
+# # write to a file
+# with open("orders.txt", "w") as file:
+#     file.write("Order 1: Burger\n")
+#     file.write("Order 2: Pizza\n")
+#     file.write("Order 3: Fries\n")  
+
+# # writelines (sequence)
+# orders = ["Order 1: Burger\n", "Order 2: Pizza\n", "Order 3: Fries\n"]
+# with open("orders.txt", "w") as file:
+#     file.writelines(orders)
+
+#dictionaries - key-value pairs
+students = {
+    "name" : "Ali",
+    "mark" : 75,
+    "city" : "Singapore"
+}
+
+students['gender'] = "male" # add a new key-value pair
+print(students) # Output: {'name': 'Ali', 'mark': 75, 'city': 'Singapore', 'gender': 'male'}
