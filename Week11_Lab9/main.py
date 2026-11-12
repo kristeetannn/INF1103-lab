@@ -5,6 +5,7 @@ from physical_product import PhysicalProduct
 from inventory import Inventory
 from order import Order
 from product_factory import ProductFactory
+from input_helper import get_positive_float
 
 
 # Create inventory object
